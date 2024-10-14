@@ -32,8 +32,8 @@ php artisan key:generate
 ```bash
 php artisan migrate -s
 ```
-8. Buat symlink untuk storage
+8. copy folder image yang ada pada folder public ke dalam folder storage/app
+9. Buat symlink untuk storage
 ```bash
 php artisan storage:link
-```
-9.  
+```  
