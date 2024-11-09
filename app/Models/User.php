@@ -20,6 +20,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_id',
+        'role_id',
+        'email_verified_at',
+        'remember_token',
     ];
 
     /**
@@ -43,5 +47,9 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    public function getRoleNameAttribute()
+    {
+        return $this->role_id == 1 ? 'User' : ($this->role_id == 2 ? 'Admin' : 'Unknown');
     }
 }
