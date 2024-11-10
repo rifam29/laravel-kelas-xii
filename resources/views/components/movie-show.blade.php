@@ -141,7 +141,7 @@
                                         <div class="clearfix"> </div>
                                     </form>
                                 @else
-                                    <p>You do not have permission to view this form.</p>
+                                    <p>You do not have permission add comment at this form.</p>
                                 @endif
                             </div>
                         </div>

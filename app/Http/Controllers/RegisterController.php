@@ -40,7 +40,10 @@ class RegisterController extends Controller
             'alamat' => 'required|string|max:255',
             'umur' => 'required|integer',
             'bio' => 'nullable|string|max:500',
+            'role' => 'required|string|in:admin,user',
         ]);
+
+        $role_id = $request->role === 'admin' ? 2 : 1;
 
         // Simpan data profil ke database
         $profile = Profile::create([
@@ -55,7 +58,7 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'profile_id' => $profile->id,
-            'role_id' => 1,
+            'role_id' => $role_id,
             'email_verified_at' => now(), // Tanggal verifikasi email
             'remember_token' => Str::random(10), // Token remember
         ]);
@@ -96,36 +99,4 @@ class RegisterController extends Controller
         //
     }
 
-    public function registerAdmin(Request $request)
-    {
-    // Validation for admin registration
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users|max:255',
-        'password' => 'required|min:8', // Strengthen password requirements if needed
-        'alamat' => 'required|string|max:255',
-        'umur' => 'required|integer',
-        'bio' => 'nullable|string|max:500',
-    ]);
-
-    // Create profile
-    $profile = Profile::create([
-        'alamat' => $request->alamat,
-        'umur' => $request->umur,
-        'bio' => $request->bio,
-    ]);
-
-    // Create admin user
-    $user = User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => Hash::make($request->password),
-        'profile_id' => $profile->id,
-        'role_id' => 2, // Set role_id to 2 for admin
-        'email_verified_at' => now(),
-        'remember_token' => Str::random(10),
-    ]);
-
-    return redirect()->route('home')->with('success', 'Admin registration successful!');
-    }
 }

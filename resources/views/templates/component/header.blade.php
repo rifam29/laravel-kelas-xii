@@ -17,12 +17,16 @@
                     @csrf
                     <button type="submit">Logout</button>
                 </form>
+                @if (Auth::user()->role_id == 2)
+                    <ul>
+                        <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
+                    </ul><br>
+                @endif
             @else
                 <ul>
                     <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
                 </ul>
+            @endif
+            <div class="clearfix"> </div>
         </div>
-        @endif
-        <div class="clearfix"> </div>
     </div>
-</div>

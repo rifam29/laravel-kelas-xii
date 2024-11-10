@@ -24,7 +24,3 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('authenticate', 'authenticate')->name('login.authenticate');
     Route::post('/logout', 'logout')->middleware('auth')->name('logout');
 });
-
-Route::get('/register_admin', function () {
-    return view('admin.register');
-});
