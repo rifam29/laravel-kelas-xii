@@ -37,7 +37,7 @@
                             </div>
                             <div class="form">
                                 <h3>Create an account</h3>
-                                <form action="{{ route('register.store') }}" method="POST">
+                                <form action="{{ route('register.admin') }}" method="POST">
                                     @csrf
                                     <input type="text" name="name" placeholder="Username" required value="{{ old('name') }}">
                                     <input type="password" name="password" placeholder="Password" required>
@@ -45,6 +45,12 @@
                                     <input type="text" name="alamat" placeholder="Alamat" required value="{{ old('alamat') }}">
                                     <input type="text" name="umur" placeholder="Umur" required value="{{ old('umur') }}">
                                     <input type="text" name="bio" placeholder="Bio" value="{{ old('bio') }}">
+                                    <label for="role">Role:</label>
+                                        <select name="role" id="role" required>
+                                            <option value="">Pilih Role</option>
+                                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                                            <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
+                                        </select>
                                     <input type="submit" value="Register">
                                 </form>
                             </div>

@@ -11,6 +11,7 @@ Route::get('/', [FilmController::class, 'movieHome'])->name('home');
 Route::get('/movies', [FilmController::class, 'movies'])->name('movies');
 Route::get('/movies/{film}', [FilmController::class, 'show'])->name('movies.show');
 Route::get('/movies/genre/{genre}', [FilmController::class, 'moviesByGenre'])->name('genre');
+Route::post('/register_admin', [RegisterController::class, 'registerAdmin'])->name('register.admin');
 
 Route::controller(RegisterController::class)->group(function () {
     Route::get('/register', 'create')->name('register.create');
