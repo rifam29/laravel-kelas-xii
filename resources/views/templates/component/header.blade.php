@@ -15,7 +15,8 @@
             @if (Auth::check())
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit">Logout</button>
+                    <button type="submit" style="background-color: black; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+                    Logout</button>
                 </form>
                 @if (Auth::user()->role_id == 2)
                     <ul>
